@@ -26,7 +26,6 @@ Name: Barbara Ramos
 Role: Grafic Designer
 Image: barbara-ramos-graphic-designer.jpg
 
-BONUS 2: Organizzare i singoli membri in card/schede
 */
 
 //MILESTONE 0: Creare l’array di oggetti con le informazioni fornite.
@@ -36,6 +35,7 @@ const ourTeam = [
         name: "Wayne Barnett",
         role: "Founder & CEO",
         image: "./assets/img/wayne-barnett-founder-ceo.jpg",
+        
     },
     
     {
@@ -54,6 +54,7 @@ const ourTeam = [
         name: "Angela Lopez",
         role: "Social Media Manager",
         image: "./assets/img/angela-lopez-social-media-manager.jpg",
+        
     },
     
     {
@@ -72,16 +73,32 @@ const ourTeam = [
 //console.log(ourTeam);
 
 //MILESTONE 1: Stampare su console le informazioni di nome, ruolo e la stringa della foto
-const teamElement = document.querySelector(".our_team");
+const teamElement = document.querySelector(".row");
 for (let i = 0; i < ourTeam.length; i++) {
     const member = ourTeam[i];
     //console.log(member);
-    for (const key in member) {
-        console.log(key, ":", member[key]);
-        //MILESTONE 2: Stampare le stesse informazioni su DOM sottoforma di stringhe
-        teamElement.innerHTML += ` ${member[key]} `;
-    }
-}
+    //BONUS 2: Organizzare i singoli membri in card/schede
+    //BONUS 1: Trasformare la stringa foto in una immagine effettiva
+    
+    const colMarkup = `
+    <div class="col">
+    <div class="card">
+    <img src="${member.image}" class="card-img-top" alt="">
+    <div class="card-body text-center">
+    <h5 class="card-title">${member.name}</h5>
+    <p class="card-text">${member.role}</p>
+    </div>
+    </div>
+    </div>`;
+    teamElement.insertAdjacentHTML("beforeend", colMarkup);
 
-//BONUS 1: Trasformare la stringa foto in una immagine effettiva
+
+    /*     for (const key in member) {
+        //console.log(key, ":", member[key]);
+        //MILESTONE 2: Stampare le stesse informazioni su DOM sottoforma di stringhe
+        //teamElement.innerHTML += `<div class="col">${member[key]}</div>`;
+    
+    }
+    */
+}
 
